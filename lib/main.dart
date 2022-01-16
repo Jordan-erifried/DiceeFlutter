@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.red,
         appBar: AppBar(
-          title: Text('Dicee App'),
-          centerTitle: true,
           backgroundColor: Colors.red,
+          title: const Text('Dicee App'),
+          centerTitle: true,
         ),
         body: DicePage(),
       ),
@@ -24,11 +24,28 @@ class MyApp extends StatelessWidget {
 }
 
 class DicePage extends StatelessWidget {
+  const DicePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
+    return Center(
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Image.asset('images/dice1.png'),
+            ),
+          ),
+
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Image.asset('images/dice2.png'),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
