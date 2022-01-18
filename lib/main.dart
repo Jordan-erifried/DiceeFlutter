@@ -6,7 +6,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.red,
         appBar: AppBar(
           backgroundColor: Colors.red,
-          title: const Text('Dicee App'),
+          title: Text('Dicee App'),
           centerTitle: true,
         ),
         body: DicePage(),
@@ -25,8 +24,8 @@ class MyApp extends StatelessWidget {
 }
 
 
-
 class DicePage extends StatefulWidget {
+  const DicePage({Key? key}) : super(key: key);
 
   @override
   _DicePageState createState() => _DicePageState();
@@ -35,35 +34,40 @@ class DicePage extends StatefulWidget {
 class _DicePageState extends State<DicePage> {
   int leftDiceNumber = 1;
   int rightDiceNumber = 1;
-    @override
-    Widget build(BuildContext context) {
-      //leftDiceNumber = 2;
-      return Center(
-        child: Row(
-          children: <Widget>[
-            Expanded(
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Row(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
               child: FlatButton(
-                onPressed: () {
-                  setState(() {
-                    leftDiceNumber = Random().nextInt(6) + 1;
-                  });
-                },
-                child: Image.asset('images/dice$leftDiceNumber.png'),
+                  onPressed: () {
+                    setState(() {
+                      leftDiceNumber = Random().nextInt(6) + 1;
+                    });
+                  },
+                  child: Image.asset('images/dice$leftDiceNumber.png')
               ),
             ),
-            Expanded(
+          ),
+
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
               child: FlatButton(
-                onPressed: () {
-                 setState(() {
-                   rightDiceNumber = Random().nextInt(6) + 1;
-                 });
-                },
-                child: Image.asset('images/dice$rightDiceNumber.png'),
+                  onPressed: () {
+                    setState(() {
+                      rightDiceNumber = Random().nextInt(6) + 1;
+                    });
+                  },
+                  child: Image.asset('images/dice$rightDiceNumber.png')
               ),
-            )
-          ],
-        ),
-      );
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
-
